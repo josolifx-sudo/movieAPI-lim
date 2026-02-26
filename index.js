@@ -29,3 +29,5 @@ connectDB(process.env.MONGODB_URI)
     console.log("DB connection error:", err.message);
     process.exit(1);
   });
+
+module.exports = {app,mongoose};
