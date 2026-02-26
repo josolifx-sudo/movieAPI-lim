@@ -49,6 +49,7 @@ async function login(req, res) {
 
     const token = createAccessToken(user);
 
+    
     return res.status(200).send({ access: token });
   } catch (err) {
     return res.status(500).send({ message: "Server error" });
