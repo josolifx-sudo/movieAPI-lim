@@ -23,6 +23,7 @@ const movieSchema = new mongoose.Schema(
     year: { type: Number, required: true },
     description: { type: String, required: true, trim: true },
     genre: { type: String, required: true, trim: true },
+    imageUrl: { type: String, default: "" }
     comments: [commentSchema]
   },
   { timestamps: true }
