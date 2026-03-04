@@ -2,15 +2,14 @@ const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema(
   {
+    comment: {
+      type: String,
+      required: [true, "Comment is required"]
+    },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true
-    },
-    comment: {
-      type: String,
-      required: true,
-      trim: true
+      default: null
     }
   },
   { timestamps: true }
@@ -18,13 +17,38 @@ const commentSchema = new mongoose.Schema(
 
 const movieSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true, trim: true },
-    director: { type: String, required: true, trim: true },
-    year: { type: Number, required: true },
-    description: { type: String, required: true, trim: true },
-    genre: { type: String, required: true, trim: true },
-    imageUrl: { type: String, default: "" }
-    comments: [commentSchema]
+    title: {
+      type: String,
+      required: [true, "Title is required"]
+    },
+    director: {
+      type: String,
+      required: [true, "Director is required"]
+    },
+    year: {
+      type: Number,
+      required: [true, "Year is required"]
+    },
+    description: {
+      type: String,
+      required: [true, "Description is required"]
+    },
+    genre: {
+      type: String,
+      required: [true, "Genre is required"]
+    },
+
+    // OPTIONAL: image or gif URL
+    imageUrl: {
+      type: String,
+      default: ""
+    },
+
+    // COMMENTS ARRAY
+    comments: {
+      type: [commentSchema],
+      default: []
+    }
   },
   { timestamps: true }
 );
